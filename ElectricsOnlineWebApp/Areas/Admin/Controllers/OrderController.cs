@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CMApp;
 using ElectricsOnlineWebApp.Models;
 using System;
 using System.Collections.Generic;

@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(ElectricsOnlineWebApp.Startup))]
-namespace ElectricsOnlineWebApp
+[assembly: OwinStartupAttribute(typeof(CMApp.Startup))]
+namespace CMApp
 {
     public partial class Startup
     {

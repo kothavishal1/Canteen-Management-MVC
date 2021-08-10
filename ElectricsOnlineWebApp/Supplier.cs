@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ElectricsOnlineWebApp
+namespace CMApp
 {
     using System;
     using System.Collections.Generic;
@@ -22,7 +22,6 @@ namespace ElectricsOnlineWebApp
     
         public int SID { get; set; }
         public string SName { get; set; }
-        public string ChefName { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Address1 { get; set; }

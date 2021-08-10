@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ElectricsOnlineWebApp.Models
 {
-    public class OrderModel : ElectricsOnlineWebApp.Order
+    public class OrderModel : CMApp.Order
     {
 
         public decimal TotalPayment

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace ElectricsOnlineWebApp.Models
+namespace CMApp.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

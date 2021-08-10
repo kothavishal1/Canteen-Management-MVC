@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ElectricsOnlineWebApp
+namespace CMApp
 {
     using System;
     using System.Collections.Generic;

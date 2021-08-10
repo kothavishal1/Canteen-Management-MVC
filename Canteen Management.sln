@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectricsOnlineWebApp", "ElectricsOnlineWebApp\ElectricsOnlineWebApp.csproj", "{3DB7D9E9-AA7F-4598-8B69-20BE9D692E66}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMApp", "ElectricsOnlineWebApp\CMApp.csproj", "{3DB7D9E9-AA7F-4598-8B69-20BE9D692E66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {08CA4D3A-8D9F-4289-80DB-D770EC7C5969}
 	EndGlobalSection
 EndGlobal

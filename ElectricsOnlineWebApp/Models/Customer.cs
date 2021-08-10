@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ElectricsOnlineWebApp.Models
+namespace CMApp.Models
 {
     public class Customer
     {

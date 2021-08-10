@@ -12,29 +12,18 @@ namespace CMApp
     using System;
     using System.Collections.Generic;
     
-    public partial class Customer
+    public partial class AspNetRole
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Customer()
+        public AspNetRole()
         {
-            this.Orders = new HashSet<Order>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
-        public int CID { get; set; }
-        public string FName { get; set; }
-        public string LName { get; set; }
-        public string Phone { get; set; }
-        public string Address1 { get; set; }
-        public string Address2 { get; set; }
-        public string Suburb { get; set; }
-        public string Postcode { get; set; }
-        public string State { get; set; }
-        public string Ctype { get; set; }
-        public string CardNo { get; set; }
-        public System.DateTime ExpDate { get; set; }
-        public string Email { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

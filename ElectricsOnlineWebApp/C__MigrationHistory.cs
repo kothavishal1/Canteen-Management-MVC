@@ -12,14 +12,11 @@ namespace CMApp
     using System;
     using System.Collections.Generic;
     
-    public partial class Order_Products
+    public partial class C__MigrationHistory
     {
-        public int OrderID { get; set; }
-        public int PID { get; set; }
-        public int Qty { get; set; }
-        public decimal TotalSale { get; set; }
-    
-        public virtual Order Order { get; set; }
-        public virtual Product Product { get; set; }
+        public string MigrationId { get; set; }
+        public string ContextKey { get; set; }
+        public byte[] Model { get; set; }
+        public string ProductVersion { get; set; }
     }
 }

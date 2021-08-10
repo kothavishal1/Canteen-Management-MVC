@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace ElectricsOnlineWebApp
+namespace CMApp
 {
     public class FilterConfig
     {

@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace ElectricsOnlineWebApp
+namespace CMApp
 {
     public class BundleConfig
     {

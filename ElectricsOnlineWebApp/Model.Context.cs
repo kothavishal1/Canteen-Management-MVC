@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ElectricsOnlineWebApp
+namespace CMApp
 {
     using System;
     using System.Data.Entity;
@@ -25,6 +25,11 @@ namespace ElectricsOnlineWebApp
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Order_Products> Order_Products { get; set; }
         public virtual DbSet<Order> Orders { get; set; }

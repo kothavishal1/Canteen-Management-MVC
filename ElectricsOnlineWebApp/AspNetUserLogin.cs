@@ -12,14 +12,12 @@ namespace CMApp
     using System;
     using System.Collections.Generic;
     
-    public partial class Order_Products
+    public partial class AspNetUserLogin
     {
-        public int OrderID { get; set; }
-        public int PID { get; set; }
-        public int Qty { get; set; }
-        public decimal TotalSale { get; set; }
+        public string LoginProvider { get; set; }
+        public string ProviderKey { get; set; }
+        public string UserId { get; set; }
     
-        public virtual Order Order { get; set; }
-        public virtual Product Product { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

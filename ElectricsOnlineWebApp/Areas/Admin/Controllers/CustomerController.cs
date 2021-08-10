@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CMApp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace ElectricsOnlineWebApp.Areas.Admin.Controllers
     {
         public CustomerController(){
             Mapper.Initialize(cfg => {
-                cfg.CreateMap<Customer, ElectricsOnlineWebApp.Models.Customer>();
+                cfg.CreateMap<Customer, CMApp.Models.Customer>();
             });
         }
 
@@ -19,7 +20,7 @@ namespace ElectricsOnlineWebApp.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var customers = _ctx.Customers.ToList();
-            var model = Mapper.Map<IEnumerable<Customer>, IEnumerable<ElectricsOnlineWebApp.Models.Customer>>(customers);
+            var model = Mapper.Map<IEnumerable<Customer>, IEnumerable<CMApp.Models.Customer>>(customers);
             return View("Index", model);
         }
 
@@ -27,7 +28,7 @@ namespace ElectricsOnlineWebApp.Areas.Admin.Controllers
         public ActionResult Details(int id)
         {
             var customer = _ctx.Customers.FirstOrDefault(c => c.CID == id);
-            var model = Mapper.Map<Customer, ElectricsOnlineWebApp.Models.Customer>(customer);
+            var model = Mapper.Map<Customer, CMApp.Models.Customer>(customer);
             return View(model);
         }
 

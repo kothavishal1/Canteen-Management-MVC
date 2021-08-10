@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using ElectricsOnlineWebApp.Models;
+using CMApp.Models;
 
-namespace ElectricsOnlineWebApp
+namespace CMApp
 {
     public partial class Startup
     {

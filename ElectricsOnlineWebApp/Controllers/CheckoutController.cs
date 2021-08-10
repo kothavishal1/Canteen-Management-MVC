@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ElectricsOnlineWebApp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ElectricsOnlineWebApp.Controllers
+namespace CMApp.Controllers
 {
     public class CheckoutController : BaseController
     {
@@ -126,7 +127,7 @@ namespace ElectricsOnlineWebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Purchase(ElectricsOnlineWebApp.Models.Customer customer)
+        public ActionResult Purchase(CMApp.Models.Customer customer)
         {
             ViewBag.States = states;
             ViewBag.Cards = cards;
