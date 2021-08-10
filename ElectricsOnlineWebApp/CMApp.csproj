@@ -389,7 +389,6 @@
     <Content Include="Views\Checkout\Index.cshtml" />
     <Content Include="Views\Checkout\Purchase.cshtml" />
     <Content Include="Views\Checkout\PurchasedSuccess.cshtml" />
-    <Content Include="Views\Home\Orders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\Base\" />

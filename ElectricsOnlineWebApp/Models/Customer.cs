@@ -62,17 +62,4 @@ namespace CMApp.Models
         [EmailAddress]
         public string Email { get; set; }
     }
-
-    public class Orders
-    {
-        public string FName { get; set; }
-        public string LName { get; set; }
-        public string Phone { get; set; }
-        public string OrderDate { get; set; }
-        public string DeliveryDate { get; set; }
-        public string PName { get; set; }
-        public string Qty { get; set; }
-        public string TotalSale { get; set; }
-        public string Brand { get; set; }
-    }
 }
