@@ -55,12 +55,11 @@
 
                     @foreach (var c in ViewBag.Cart)
                     {
-                        <tr><td>@c.Quantity x @String.Format(System.Globalization.CultureInfo.GetCultureInfo("en-GB"), "{0:C}", c.UnitPrice)</td>
-                            <td>@c.PName</td></tr>
+                        <tr><td>@c.Quantity x @c.UnitPrice</td><td>@c.PName</td></tr>
                     }
 
                     <tr>
-                        <td>Total: @String.Format(System.Globalization.CultureInfo.GetCultureInfo("en-GB"), "{0:C}", ViewBag.CartTotalPrice)</td>
+                        <td>Total: @String.Format("{0:C}", ViewBag.CartTotalPrice)</td>
                         <td>@Html.ActionLink("Check Out", "Index", "Checkout")</td>
                     </tr>
 
