@@ -39,7 +39,7 @@
         </dt>
 
         <dd>
-            @String.Format("{0:c}", Model.TotalPayment)
+            @String.Format(System.Globalization.CultureInfo.GetCultureInfo("en-GB"), "{0:c}", Model.TotalPayment)
         </dd>
     </dl>
 

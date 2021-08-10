@@ -18,7 +18,7 @@
 
 @if (ViewBag.Products.Count == 0)
 {
-    <br/>
+    <br />
     <div id="EmptyDataMsg" class="alert alert-info">
         <strong>Welcome!</strong> Our shop is currently empty.
     </div>
@@ -36,20 +36,20 @@ else
 
                 <div class="add-to-cart">
                     @Html.ActionLink("add to cart", "AddToCart", "Home", new { id = item.PID }, null)
-                    <span class="p-price">@String.Format("{0:c}", item.UnitPrice)</span>
+                    <span class="p-price">@String.Format(System.Globalization.CultureInfo.GetCultureInfo("en-GB"), "{0:c}", item.UnitPrice)</span>
                 </div>
                 <span class="p-unit">
                     @item.UnitsInStock
-                @if (item.UnitsInStock > 1)
-                {
-                    <text>units</text>
-                }
-                else
-                {
-                    <text>unit</text>
-                }
-            </span>
-        </div>
+                    @if (item.UnitsInStock > 1)
+                    {
+                        <text>units</text>
+                    }
+                    else
+                    {
+                        <text>unit</text>
+                    }
+                </span>
+            </div>
         }
     </div>
 }
@@ -57,12 +57,12 @@ else
 
 
 @*<tr>
-    <td>@item.pname</td>
-    <td>@string.format("{0:c}", item.unitprice)</td>
-    <td>
-        <a class="quantity" onclick="change(this, 1, @item.pid)">+</a>
-        <span>@item.quantity</span>
-        <a class="quantity" onclick="change(this, 0, @item.pid)">-</a>
-        <a class="remove" onclick="change(this, -1, @item.pid)">remove</a>
-    </td>
-</tr>*@
+        <td>@item.pname</td>
+        <td>@string.format(System.Globalization.CultureInfo.GetCultureInfo("en-GB"),"{0:c}", item.unitprice)</td>
+        <td>
+            <a class="quantity" onclick="change(this, 1, @item.pid)">+</a>
+            <span>@item.quantity</span>
+            <a class="quantity" onclick="change(this, 0, @item.pid)">-</a>
+            <a class="remove" onclick="change(this, -1, @item.pid)">remove</a>
+        </td>
+    </tr>*@
