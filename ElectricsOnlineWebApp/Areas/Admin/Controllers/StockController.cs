@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ElectricsOnlineWebApp.Areas.Admin.Controllers
+namespace CMApp.Areas.Admin.Controllers
 {
     public class StockController : BaseController
     {

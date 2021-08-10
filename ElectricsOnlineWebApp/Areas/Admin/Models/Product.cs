@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace ElectricsOnlineWebApp.Areas.Admin.Models
+namespace CMApp.Areas.Admin.Models
 {
     public class Product : Base
     {

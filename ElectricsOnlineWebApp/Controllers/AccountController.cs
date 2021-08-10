@@ -187,7 +187,7 @@ namespace CMApp.Controllers
                     } else
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                        return RedirectToAction("Index", "Product", new { area = "Admin" });
+                        return RedirectToAction("Index", "Home");
                     }
                 }
                 AddErrors(result);
@@ -417,7 +417,7 @@ namespace CMApp.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         [AllowAnonymous]

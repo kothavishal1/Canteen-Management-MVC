@@ -1,4 +1,4 @@
-﻿@model ElectricsOnlineWebApp.Models.OrderModel
+﻿@model CMApp.Models.OrderModel
 
 @{
     ViewBag.Title = "Details";
@@ -39,7 +39,7 @@
         </dt>
 
         <dd>
-            @String.Format("{0:c}", Model.TotalPayment)
+            @Model.TotalPayment.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-gb"))
         </dd>
     </dl>
 

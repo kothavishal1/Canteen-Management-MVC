@@ -18,22 +18,35 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Canteen Management", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @if (Request.IsAuthenticated)
+                {
+                    @Html.ActionLink("Canteen Management", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                }
+                else
+                {
+                    @Html.ActionLink("Canteen Management", "Login", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                }
             </div>
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Cuisines", "Suppliers", "Home")</li>
-                    <li>@Html.ActionLink("All Orders", "Orders", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Cuisines", "Suppliers", "Home")</li>
+                        <li>@Html.ActionLink("All Orders", "Orders", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    }
                 </ul>
-                
+
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
-        @if (ViewBag.Cart != null)
+
+        @if (ViewBag.Cart != null && Request.IsAuthenticated)
         {
             <a class="basket">
 
@@ -42,23 +55,23 @@
 
                     @foreach (var c in ViewBag.Cart)
                     {
-                        <tr><td>@c.Quantity x @String.Format("{0:c}", c.UnitPrice)</td><td>@c.PName</td></tr>
+                        <tr><td>@c.Quantity x @c.UnitPrice.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-gb"))</td><td>@c.PName</td></tr>
                     }
 
                     <tr>
-                        <td>Total: @String.Format("{0:c}", ViewBag.CartTotalPrice)</td>
+                        <td>Total: @ViewBag.CartTotalPrice.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-gb"))</td>
                         <td>@Html.ActionLink("Check Out", "Index", "Checkout")</td>
                     </tr>
 
                 </table>
             </a>
         }
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Canteen Store</p>
-            </footer>
-        </div>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Canteen Store</p>
+        </footer>
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

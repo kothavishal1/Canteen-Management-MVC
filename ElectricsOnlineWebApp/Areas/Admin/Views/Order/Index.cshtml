@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ElectricsOnlineWebApp.Models.OrderModel>
+﻿@model IEnumerable<CMApp.Models.OrderModel>
 
 @{
     ViewBag.Title = "Index";
@@ -45,7 +45,7 @@ else
                 @String.Format("{0} {1}", item.Customer.FName, item.Customer.LName)
             </td>
             <td>
-                @String.Format("{0:c}", item.TotalPayment)
+                @item.TotalPayment.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-gb"))
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", new { id = item.OrderID })

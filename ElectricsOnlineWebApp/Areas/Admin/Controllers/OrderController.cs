@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using CMApp;
-using ElectricsOnlineWebApp.Models;
+using CMApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ElectricsOnlineWebApp.Areas.Admin.Controllers
+namespace CMApp.Areas.Admin.Controllers
 {
     public class OrderController : BaseController
     {

@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace ElectricsOnlineWebApp.Areas.Admin
+namespace CMApp.Areas.Admin
 {
     public class AdminAreaRegistration : AreaRegistration 
     {

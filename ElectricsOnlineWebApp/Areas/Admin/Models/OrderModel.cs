@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ElectricsOnlineWebApp.Models
+namespace CMApp.Models
 {
     public class OrderModel : CMApp.Order
     {

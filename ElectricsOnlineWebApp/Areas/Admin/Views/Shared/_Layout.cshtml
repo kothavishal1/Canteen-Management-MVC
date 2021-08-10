@@ -22,10 +22,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Product", "Index", "Product", null, null)</li>
                     <li>@Html.ActionLink("Suppliers", "Index", "Supplier", null, null)</li>
                     <li>@Html.ActionLink("Customers", "Index", "Customer", null, null)</li>
                     <li>@Html.ActionLink("Orders", "Index", "Order", null, null)</li>
-                    <li>@Html.ActionLink("Stocks", "Index", "Stock", null, null)</li>
+                    <li>@*@Html.ActionLink("Stocks", "Index", "Stock", null, null)*@</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink("Shop", "Index", "Home", new { area = "" }, null)</li>

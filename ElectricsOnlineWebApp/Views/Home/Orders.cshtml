@@ -28,35 +28,32 @@
         </thead>
         @foreach (var item in ViewBag.OrdersData)
         {
-    <tr>
-        <td>
-            @item.FName
-        </td>
-        <td>
-            @item.LName
-        </td>
-        <td>
-            @item.Phone
-        </td>
-        <td>
-            @item.OrderDate
-        </td>
-        <td>
-            @item.PName
-        </td>
-        <td>
-            @item.Qty
-        </td>
-        <td>
-            @item.TotalSale
-        </td>
-        <td>
-            @item.Brand
-        </td>
-    </tr>
-
-
-
+            <tr>
+                <td>
+                    @item.FName
+                </td>
+                <td>
+                    @item.LName
+                </td>
+                <td>
+                    @item.Phone
+                </td>
+                <td>
+                    @item.OrderDate
+                </td>
+                <td>
+                    @item.PName
+                </td>
+                <td>
+                    @item.Qty
+                </td>
+                <td>
+                    @item.TotalSale
+                </td>
+                <td>
+                    @item.Brand
+                </td>
+            </tr>
         }
 
     </table>
