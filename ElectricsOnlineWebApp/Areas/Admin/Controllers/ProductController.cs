@@ -111,6 +111,7 @@ namespace CMApp.Areas.Admin.Controllers
         public ActionResult Delete(int id)
         {
             var product = _ctx.Products.FirstOrDefault(p => p.PID == id);
+            _ctx.Products.Remove(product);
             return RedirectToAction("Index");
         }
     }
