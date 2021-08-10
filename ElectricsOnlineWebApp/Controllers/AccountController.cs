@@ -93,7 +93,8 @@ namespace CMApp.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("Index", "Product", new { area = "Admin" });
+                    //return RedirectToAction("Index", "Product", new { area = "Admin" });
+                    return RedirectToAction("Index", "Home");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

@@ -38,6 +38,33 @@ namespace CMApp.Controllers
             return View();
         }
 
+        public ActionResult Orders()
+        {
+            List<Product> Products = _ctx.Products.ToList<Product>();
+            List<Customer> Customers = _ctx.Customers.ToList<Customer>();
+            List<Order> Orders = _ctx.Orders.ToList<Order>();
+            List<Order_Products> Order_Products = _ctx.Order_Products.ToList<Order_Products>();
+
+            var ordersData = (from cust in Customers
+                              join o in Orders on cust.CID equals o.CID
+                              join op in Order_Products on o.OrderID equals op.OrderID
+                              join p in Products on op.PID equals p.PID
+                              select new CMApp.Models.Orders
+                              {
+                                  FName = cust.FName,
+                                  LName = cust.LName,
+                                  Phone = cust.Phone,
+                                  OrderDate = o.OrderDate.ToString("dd/MM/yyyy"),
+                                  DeliveryDate = o.DeliveryDate.ToString("dd/MM/yyyy"),
+                                  PName =p.PName,
+                                  Qty=op.Qty.ToString(),
+                                  TotalSale=op.TotalSale.ToString(),
+                                  Brand=p.Brand
+                              }).ToList();
+            ViewBag.OrdersData = ordersData;
+            return View();
+        }
+
         public ActionResult AddToCart(int id)
         {
             addToCart(id);
