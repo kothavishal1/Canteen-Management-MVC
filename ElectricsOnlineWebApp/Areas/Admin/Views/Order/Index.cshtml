@@ -45,7 +45,7 @@ else
                 @String.Format("{0} {1}", item.Customer.FName, item.Customer.LName)
             </td>
             <td>
-                @String.Format(System.Globalization.CultureInfo.GetCultureInfo("en-GB"), "{0:c}", item.TotalPayment)
+                @String.Format("{0:c}", item.TotalPayment)
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", new { id = item.OrderID })
