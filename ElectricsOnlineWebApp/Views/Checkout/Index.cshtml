@@ -10,7 +10,7 @@
         function UpdateTotalPrice() {
             $.ajax({
                 type: 'GET',
-                url: "Checkout/UpdateTotal",
+                url: "/Checkout/UpdateTotal",
                 contentType: "application/json; charset=utf-8",
                 success: function (msg) {
                     if (msg.d == "$0.00") {
@@ -30,7 +30,7 @@
             };
             $.ajax({
                 type: 'POST',
-                url: "Checkout/QuanityChange",
+                url: "/Checkout/QuanityChange",
                 data:"{ 'type': " + type +", 'pId': " + pid + "}",
                 contentType: "application/json; charset=utf-8",
                 success: function (msg) {
@@ -65,7 +65,7 @@ else
         {
             <tr>
                 <td><span class="p-name">@item.PName</span> </td>
-                <td><span class="p-name">@String.Format("{0:c}", item.UnitPrice)</span> </td>
+                <td><span class="p-name">@String.Format(System.Globalization.CultureInfo.GetCultureInfo("en-GB"),"{0:c}", item.UnitPrice)</span> </td>
                 <td>
                     <a class="quantity" onclick="Change(this, 1, @item.PID)">+</a>
                     <span class="p-name">@item.Quantity</span>
@@ -74,7 +74,7 @@ else
                 </td>
             </tr>
         }
-        <tr><td>Total: </td><td id="totalPrice" colspan="2">@String.Format("{0:c}", ViewBag.CartTotalPrice)</td></tr>
+        <tr><td>Total: </td><td id="totalPrice" colspan="2">@String.Format(System.Globalization.CultureInfo.GetCultureInfo("en-GB"),"{0:c}", ViewBag.CartTotalPrice)</td></tr>
     </table>
     <div class="button">
         @Html.ActionLink("Clear Cart", "Clear", "Checkout", null, new { @class = "btn btn-default" })

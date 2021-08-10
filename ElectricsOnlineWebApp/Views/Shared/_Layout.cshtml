@@ -59,7 +59,7 @@
                     }
 
                     <tr>
-                        <td>Total: @String.Format("{0:C}", ViewBag.CartTotalPrice)</td>
+                        <td>Total: @String.Format(System.Globalization.CultureInfo.GetCultureInfo("en-GB"), "{0:C}", ViewBag.CartTotalPrice)</td>
                         <td>@Html.ActionLink("Check Out", "Index", "Checkout")</td>
                     </tr>
 
