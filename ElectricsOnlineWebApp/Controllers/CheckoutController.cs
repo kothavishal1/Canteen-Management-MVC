@@ -98,7 +98,7 @@ namespace CMApp.Controllers
             }
             catch (Exception) { total = 0; }
 
-            return Json(new { d = total.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-gb")) }, JsonRequestBehavior.AllowGet);
+            return Json(new { d = String.Format(System.Globalization.CultureInfo.GetCultureInfo("en-GB"), "{0:c}", total) }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Clear()

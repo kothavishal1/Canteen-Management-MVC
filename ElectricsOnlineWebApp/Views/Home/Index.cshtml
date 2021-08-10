@@ -36,7 +36,7 @@ else
 
                 <div class="add-to-cart">
                     @Html.ActionLink("add to cart", "AddToCart", "Home", new { id = item.PID }, null)
-                    <span class="p-price">@item.UnitPrice.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-gb"))</span>
+                    <span class="p-price">@String.Format(System.Globalization.CultureInfo.GetCultureInfo("en-GB"), "{0:c}", item.UnitPrice)</span>
                 </div>
                 <span class="p-unit">
                     @item.UnitsInStock
@@ -58,7 +58,7 @@ else
 
 @*<tr>
         <td>@item.pname</td>
-        <td>item.unitprice.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-gb"))</td>
+        <td>@string.format(System.Globalization.CultureInfo.GetCultureInfo("en-GB"),"{0:c}", item.unitprice)</td>
         <td>
             <a class="quantity" onclick="change(this, 1, @item.pid)">+</a>
             <span>@item.quantity</span>
