@@ -54,9 +54,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IServices\ICheckoutService.cs" />
     <Compile Include="IServices\IProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\CheckoutService.cs" />
     <Compile Include="Services\ProductService.cs" />
   </ItemGroup>
   <ItemGroup>

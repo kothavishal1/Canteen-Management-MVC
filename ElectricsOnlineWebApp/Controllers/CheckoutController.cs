@@ -5,13 +5,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CMAppDataLayer;
+using CMApp.Business.Services;
+using CMApp.Business.IServices;
+
 namespace CMApp.Controllers
 {
     public class CheckoutController : BaseController
     {
         private List<object> states;
         private List<object> cards;
-
+        private readonly ICheckoutService _checkOut;
         public CheckoutController()
         {
             states = new List<object> {
@@ -30,7 +33,7 @@ namespace CMApp.Controllers
                 new { Type = "Master Card" },
                 new { Type = "AMEX" }
             };
-
+            _checkOut = new CheckoutService();
         }
         
         // GET: Checkout
@@ -42,62 +45,14 @@ namespace CMApp.Controllers
         
         public JsonResult QuanityChange(int type, int pId)
         {
-            ElectricsOnlineEntities context = new ElectricsOnlineEntities();
-
-            ShoppingCartData product = context.ShoppingCartDatas.FirstOrDefault(p => p.PID == pId);
-            if (product == null)
-            {
-                return Json(new { d = "0" });
-            }
-
-            Product actualProduct = context.Products.FirstOrDefault(p => p.PID == pId);
-            int quantity;
-            // if type 0, decrease quantity
-            // if type 1, increase quanity
-            switch (type)
-            {
-                case 0:
-                    product.Quantity--;
-                    actualProduct.UnitsInStock++;
-                    break;
-                case 1:
-                    product.Quantity++;
-                    actualProduct.UnitsInStock--;
-                    break;
-                case -1:
-                    actualProduct.UnitsInStock += product.Quantity;
-                    product.Quantity = 0;
-                    break;
-                default:
-                    return Json(new { d = "0" });
-            }
-
-            if (product.Quantity == 0)
-            {
-                context.ShoppingCartDatas.Remove(product);
-                quantity = 0;
-            }
-            else
-            {
-                quantity = product.Quantity;
-            }
-
-            context.SaveChanges();
+            int quantity = _checkOut.checkOut(type, pId);
             return Json(new { d = quantity });
         }
         
         [HttpGet]
         public JsonResult UpdateTotal()
         {
-            ElectricsOnlineEntities context = new ElectricsOnlineEntities();
-            decimal total;
-            try
-            {
-
-                total = context.ShoppingCartDatas.Select(p => p.UnitPrice * p.Quantity).Sum();
-            }
-            catch (Exception) { total = 0; }
-
+            decimal total = _checkOut.UpdateTotal();
             return Json(new { d = String.Format(System.Globalization.CultureInfo.GetCultureInfo("en-GB"), "{0:c}", total) }, JsonRequestBehavior.AllowGet);
         }
 
@@ -105,13 +60,7 @@ namespace CMApp.Controllers
         {
             try
             {
-                List<ShoppingCartData> carts = _ctx.ShoppingCartDatas.ToList();
-                carts.ForEach(a => {
-                    Product product = _ctx.Products.FirstOrDefault(p => p.PID == a.PID);
-                    product.UnitsInStock += a.Quantity;
-                });
-                _ctx.ShoppingCartDatas.RemoveRange(carts);
-                _ctx.SaveChanges();
+               _checkOut.Clear();
             }
             catch (Exception) { }
             return RedirectToAction("Index", "Home", null);
@@ -127,7 +76,7 @@ namespace CMApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Purchase(CMApp.Models.Customer customer)
+        public ActionResult Purchase(Customer customer)
         {
             ViewBag.States = states;
             ViewBag.Cards = cards;
@@ -156,46 +105,8 @@ namespace CMApp.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    Customer c = new Customer
-                    {
-                        FName = customer.FName,
-                        LName = customer.LName,
-                        Email = customer.Email,
-                        Phone = customer.Phone,
-                        Address1 = customer.Address1,
-                        Address2 = customer.Address2,
-                        Suburb = customer.Suburb,
-                        Postcode = customer.Postcode,
-                        State = customer.State,
-                        Ctype = customer.Ctype,
-                        CardNo = customer.CardNo,
-                        ExpDate = customer.ExpDate
-                    };
 
-                    Order o = new Order
-                    {
-                        OrderDate = DateTime.Now,
-                        DeliveryDate = DateTime.Now.AddDays(5),
-                        CID = c.CID
-                    };
-
-                    _ctx.Customers.Add(c);
-                    _ctx.Orders.Add(o);
-
-                    foreach (var i in _ctx.ShoppingCartDatas.ToList<ShoppingCartData>())
-                    {
-                        _ctx.Order_Products.Add(new Order_Products
-                        {
-                            OrderID = o.OrderID,
-                            PID = i.PID,
-                            Qty = i.Quantity,
-                            TotalSale = i.Quantity * i.UnitPrice
-                        });
-                        _ctx.ShoppingCartDatas.Remove(i);
-                    }
-
-                    _ctx.SaveChanges();
-
+                    _checkOut.Purchase(customer);
                     return RedirectToAction("PurchasedSuccess");
 
                 }
