@@ -113,6 +113,7 @@ namespace CMApp.Areas.Admin.Controllers
         {
             var product = _ctx.Products.FirstOrDefault(p => p.PID == id);
             _ctx.Products.Remove(product);
+            _ctx.SaveChanges();
             return RedirectToAction("Index");
         }
     }

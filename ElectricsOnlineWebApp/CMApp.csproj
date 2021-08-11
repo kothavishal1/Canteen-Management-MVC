@@ -338,6 +338,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CMApp.Business\CMAppBusiness.csproj">
+      <Project>{83ab8228-83a8-48e9-8926-09d7b818a246}</Project>
+      <Name>CMAppBusiness</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CMAppDataLayer\CMAppDataLayer.csproj">
       <Project>{356BB0DE-81D3-4716-839A-830CBF547CBF}</Project>
       <Name>CMAppDataLayer</Name>

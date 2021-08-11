@@ -5,14 +5,21 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CMAppDataLayer;
+using CMAppBusiness.IServices;
+using CMAppBusiness.Services;
+
 namespace CMApp.Controllers
 {
     public class HomeController : BaseController
     {
+        private readonly IProductService _product;
+        public HomeController()
+        {
+            _product = new ProductService();
+        }
         
         public ActionResult Index()
         {
-
             List<Product> products = _ctx.Products.ToList<Product>();
             ViewBag.Products = products;
             return View();
@@ -20,13 +27,7 @@ namespace CMApp.Controllers
 
         public ActionResult Category(string catName)
         {
-            List<Product> products;
-            if (catName == "")
-            {
-                products = _ctx.Products.ToList<Product>();
-            } else { 
-                products = _ctx.Products.Where(p => p.Category == catName).ToList<Product>();
-            }
+            List<Product> products = _product.GetCategory(catName);
             ViewBag.Products = products;
             return View("Index");
         }
@@ -40,27 +41,7 @@ namespace CMApp.Controllers
 
         public ActionResult Orders()
         {
-            List<Product> Products = _ctx.Products.ToList<Product>();
-            List<Customer> Customers = _ctx.Customers.ToList<Customer>();
-            List<Order> Orders = _ctx.Orders.ToList<Order>();
-            List<Order_Products> Order_Products = _ctx.Order_Products.ToList<Order_Products>();
-
-            var ordersData = (from cust in Customers
-                              join o in Orders on cust.CID equals o.CID
-                              join op in Order_Products on o.OrderID equals op.OrderID
-                              join p in Products on op.PID equals p.PID
-                              select new CMApp.Models.Orders
-                              {
-                                  FName = cust.FName,
-                                  LName = cust.LName,
-                                  Phone = cust.Phone,
-                                  OrderDate = o.OrderDate.ToString("dd/MM/yyyy"),
-                                  DeliveryDate = o.DeliveryDate.ToString("dd/MM/yyyy"),
-                                  PName =p.PName,
-                                  Qty=op.Qty.ToString(),
-                                  TotalSale=op.TotalSale.ToString(),
-                                  Brand=p.Brand
-                              }).ToList();
+            List<CMAppDataLayer.Models.Orders> ordersData = _product.getOrdersData();
             ViewBag.OrdersData = ordersData;
             return View();
         }
@@ -74,31 +55,7 @@ namespace CMApp.Controllers
         private void addToCart(int pId)
         {
             // check if product is valid
-            Product product = _ctx.Products.FirstOrDefault(p => p.PID == pId);
-            if (product != null && product.UnitsInStock > 0)
-            {
-                // check if product already existed
-                ShoppingCartData cart = _ctx.ShoppingCartDatas.FirstOrDefault(c => c.PID == pId);
-                if (cart != null)
-                {
-                    cart.Quantity++;
-                }
-                else
-                {
-
-                    cart = new ShoppingCartData
-                    {
-                        PName = product.PName,
-                        PID = product.PID,
-                        UnitPrice = product.UnitPrice,
-                        Quantity = 1
-                    };
-
-                    _ctx.ShoppingCartDatas.Add(cart);
-                }
-                product.UnitsInStock--;
-                _ctx.SaveChanges();
-            }
+            _product.addToCart(pId);
         }
 
         public ActionResult About()
