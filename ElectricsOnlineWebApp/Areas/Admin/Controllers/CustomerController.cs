@@ -5,14 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using CMAppDataLayer;
 namespace CMApp.Areas.Admin.Controllers
 {
     public class CustomerController : BaseController
     {
         public CustomerController(){
             Mapper.Initialize(cfg => {
-                cfg.CreateMap<Customer, CMApp.Models.Customer>();
+                cfg.CreateMap<Customer, CMAppDataLayer.Customer>();
             });
         }
 
@@ -20,7 +20,7 @@ namespace CMApp.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var customers = _ctx.Customers.ToList();
-            var model = Mapper.Map<IEnumerable<Customer>, IEnumerable<CMApp.Models.Customer>>(customers);
+            var model = Mapper.Map<IEnumerable<Customer>, IEnumerable<CMAppDataLayer.Customer>>(customers);
             return View("Index", model);
         }
 
@@ -28,7 +28,7 @@ namespace CMApp.Areas.Admin.Controllers
         public ActionResult Details(int id)
         {
             var customer = _ctx.Customers.FirstOrDefault(c => c.CID == id);
-            var model = Mapper.Map<Customer, CMApp.Models.Customer>(customer);
+            var model = Mapper.Map<Customer, CMAppDataLayer.Customer>(customer);
             return View(model);
         }
 

@@ -1,11 +1,12 @@
-﻿using CMApp;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using CMAppDataLayer;
 
-namespace CMApp.Areas.Admin.Models
+namespace CMAppDataLayer.Models.Admin
 {
     public class Product : Base
     {

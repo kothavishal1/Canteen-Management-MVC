@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CMApp
+namespace CMAppDataLayer
 {
     using System;
     using System.Data.Entity;

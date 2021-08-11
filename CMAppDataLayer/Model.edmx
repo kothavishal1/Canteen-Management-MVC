@@ -140,6 +140,7 @@
           <Property Name="Suburb" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="State" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Postcode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChefName" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -442,6 +443,7 @@
           <Property Name="Suburb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Postcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ChefName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Products_Suppliers" FromRole="Suppliers" ToRole="Products" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
@@ -709,6 +711,7 @@
                 <ScalarProperty Name="Suburb" ColumnName="Suburb" />
                 <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+                <ScalarProperty Name="ChefName" ColumnName="ChefName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

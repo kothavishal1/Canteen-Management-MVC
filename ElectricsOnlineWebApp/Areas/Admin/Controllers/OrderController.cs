@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using CMAppDataLayer;
 namespace CMApp.Areas.Admin.Controllers
 {
     public class OrderController : BaseController
@@ -14,7 +14,7 @@ namespace CMApp.Areas.Admin.Controllers
         public OrderController()
         {
             Mapper.Initialize(cfg => {
-                cfg.CreateMap<Order, OrderModel>();
+                cfg.CreateMap<Order, CMAppDataLayer.Models.Admin.OrderModel>();
             });
         }
 
@@ -22,7 +22,7 @@ namespace CMApp.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var orders = _ctx.Orders;
-            var model = Mapper.Map<IEnumerable<Order>, IEnumerable<OrderModel>>(orders);
+            var model = Mapper.Map<IEnumerable<Order>, IEnumerable<CMAppDataLayer.Models.Admin.OrderModel>>(orders);
             return View(model);
         }
 
@@ -30,7 +30,7 @@ namespace CMApp.Areas.Admin.Controllers
         public ActionResult Details(int id)
         {
             var order = _ctx.Orders.FirstOrDefault(o => o.OrderID == id);
-            var model = Mapper.Map<OrderModel>(order);
+            var model = Mapper.Map<CMAppDataLayer.Models.Admin.OrderModel>(order);
             return View(model);
         }
     }

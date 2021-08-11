@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CMAppDataLayer;
 
 namespace CMApp.Areas.Admin.Controllers
 {
@@ -13,8 +14,8 @@ namespace CMApp.Areas.Admin.Controllers
         public ProductController()
         {
             Mapper.Initialize(cfg => {
-                cfg.CreateMap<Product, Models.Product>();
-                cfg.CreateMap<Models.Product, Product>();
+                cfg.CreateMap<Product, CMAppDataLayer.Models.Admin.Product>();
+                cfg.CreateMap<CMAppDataLayer.Models.Admin.Product, Product>();
             });
 
             ViewBag.Suppliers = _ctx.Suppliers;
@@ -23,14 +24,14 @@ namespace CMApp.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var products = _ctx.Products;
-            var model = Mapper.Map<IEnumerable<Product>, IEnumerable<Models.Product>>(products);
+            var model = Mapper.Map<IEnumerable<Product>, IEnumerable<CMAppDataLayer.Models.Admin.Product >>(products);
             return View(model);
         }
 
-        private Models.Product _getProduct(int id)
+        private CMAppDataLayer.Models.Admin.Product _getProduct(int id)
         {
             var product = _ctx.Products.FirstOrDefault(p => p.PID == id);
-            var model = Mapper.Map<Product, Models.Product>(product);
+            var model = Mapper.Map<Product, CMAppDataLayer.Models.Admin.Product >(product);
             return model;
         }
 
@@ -48,7 +49,7 @@ namespace CMApp.Areas.Admin.Controllers
 
         // POST: Admin/Product/Create
         [HttpPost]
-        public ActionResult Create(Models.Product model)
+        public ActionResult Create(CMAppDataLayer.Models.Admin.Product model)
         {
             try
             {
@@ -83,7 +84,7 @@ namespace CMApp.Areas.Admin.Controllers
 
         // POST: Admin/Product/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Models.Product model)
+        public ActionResult Edit(int id, CMAppDataLayer.Models.Admin.Product model)
         {
             try
             {

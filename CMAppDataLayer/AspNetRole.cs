@@ -7,26 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CMApp
+namespace CMAppDataLayer
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class AspNetRole
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
+        public AspNetRole()
         {
-            this.Order_Products = new HashSet<Order_Products>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
-        public int OrderID { get; set; }
-        public System.DateTime OrderDate { get; set; }
-        public System.DateTime DeliveryDate { get; set; }
-        public int CID { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
     
-        public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order_Products> Order_Products { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

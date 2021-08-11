@@ -7,30 +7,31 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CMApp
+namespace CMAppDataLayer
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Supplier
+    public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Supplier()
+        public Product()
         {
-            this.Products = new HashSet<Product>();
+            this.Order_Products = new HashSet<Order_Products>();
         }
     
+        public int PID { get; set; }
+        public string PName { get; set; }
+        public string Brand { get; set; }
+        public decimal UnitPrice { get; set; }
+        public int UnitsInStock { get; set; }
+        public string Category { get; set; }
+        public string Description { get; set; }
         public int SID { get; set; }
-        public string SName { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string Address1 { get; set; }
-        public string Address2 { get; set; }
-        public string Suburb { get; set; }
-        public string State { get; set; }
-        public string Postcode { get; set; }
+        public int ROL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Order_Products> Order_Products { get; set; }
+        public virtual Supplier Supplier { get; set; }
     }
 }

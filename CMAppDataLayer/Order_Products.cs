@@ -7,17 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CMApp
+namespace CMAppDataLayer
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class ShoppingCartData
+    public partial class Order_Products
     {
-        public int TempOrderID { get; set; }
+        public int OrderID { get; set; }
         public int PID { get; set; }
-        public string PName { get; set; }
-        public decimal UnitPrice { get; set; }
-        public int Quantity { get; set; }
+        public int Qty { get; set; }
+        public decimal TotalSale { get; set; }
+    
+        public virtual Order Order { get; set; }
+        public virtual Product Product { get; set; }
     }
 }
