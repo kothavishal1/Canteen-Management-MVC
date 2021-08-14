@@ -8,6 +8,6 @@ namespace CMAppDataLayer.Models.Admin
 {
     public class Base
     {
-        protected ElectricsOnlineEntities _ctx = new ElectricsOnlineEntities();
+        protected CanteenManagementEntities _ctx = new CanteenManagementEntities();
     }
 }

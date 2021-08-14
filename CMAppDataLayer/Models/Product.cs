@@ -7,7 +7,7 @@ namespace CMAppDataLayer
 {
     public partial class Product
     {
-        private ElectricsOnlineEntities _ctx = new ElectricsOnlineEntities();
+        private CanteenManagementEntities _ctx = new CanteenManagementEntities();
         public List<Product> All
         {
             get

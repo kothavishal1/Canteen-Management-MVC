@@ -7,7 +7,7 @@ namespace CMAppDataLayer
 {
     public partial class Supplier
     {
-        private ElectricsOnlineEntities _ctx = new ElectricsOnlineEntities();
+        private CanteenManagementEntities _ctx = new CanteenManagementEntities();
 
         public IEnumerable<Supplier> All
         {

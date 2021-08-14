@@ -9,6 +9,6 @@ namespace CMAppBusiness.Services
 {
     public class BaseService
     {
-        protected ElectricsOnlineEntities _ctx = new ElectricsOnlineEntities();
+        protected CanteenManagementEntities _ctx = new CanteenManagementEntities();
     }
 }

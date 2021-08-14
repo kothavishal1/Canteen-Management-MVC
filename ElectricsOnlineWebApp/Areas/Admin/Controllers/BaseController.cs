@@ -10,6 +10,6 @@ namespace CMApp.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class BaseController : Controller
     {
-        protected ElectricsOnlineEntities _ctx = new ElectricsOnlineEntities();
+        protected CanteenManagementEntities _ctx = new CanteenManagementEntities();
     }
 }

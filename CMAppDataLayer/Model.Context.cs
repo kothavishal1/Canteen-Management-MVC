@@ -13,10 +13,10 @@ namespace CMAppDataLayer
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ElectricsOnlineEntities : DbContext
+    public partial class CanteenManagementEntities : DbContext
     {
-        public ElectricsOnlineEntities()
-            : base("name=ElectricsOnlineEntities")
+        public CanteenManagementEntities()
+            : base("name=CanteenManagementEntities")
         {
         }
     

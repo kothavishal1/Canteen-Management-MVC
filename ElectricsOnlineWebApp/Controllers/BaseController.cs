@@ -10,7 +10,7 @@ namespace CMApp.Controllers
 {
     public class BaseController : Controller
     {
-        protected ElectricsOnlineEntities _ctx = new ElectricsOnlineEntities();
+        protected CanteenManagementEntities _ctx = new CanteenManagementEntities();
 
         public BaseController()
         {

@@ -13,7 +13,7 @@ namespace CMApp.Business.Services
     {
         public int checkOut(int type, int pId)
         {
-            ElectricsOnlineEntities context = new ElectricsOnlineEntities();
+            CanteenManagementEntities context = new CanteenManagementEntities();
 
             ShoppingCartData product = context.ShoppingCartDatas.FirstOrDefault(p => p.PID == pId);
             if (product == null)
@@ -58,7 +58,7 @@ namespace CMApp.Business.Services
         }
         public decimal UpdateTotal()
         {
-            ElectricsOnlineEntities context = new ElectricsOnlineEntities();
+            CanteenManagementEntities context = new CanteenManagementEntities();
             decimal total = 0;
             try
             {
